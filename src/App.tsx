@@ -1,11 +1,10 @@
-import "./App.css";
-import Calender from "./components/Calender";
+import Calendar from "./components/Calendar.tsx";
 import { EventsProvider } from "./context/Events";
 
 function App() {
   return (
     <EventsProvider>
-      <Calender />
+      <Calendar />
     </EventsProvider>
   );
 }

@@ -18,8 +18,11 @@ export type Event = {
 
 type EventContextType = {
   events: Event[];
+  // eslint-disable-next-line no-unused-vars
   addEvent: (event: UnionOmit<Event, "id">) => void;
+  // eslint-disable-next-line no-unused-vars
   EditEvent: (id: string, event: UnionOmit<Event, "id">) => void;
+  // eslint-disable-next-line no-unused-vars
   removeEvent: (id: string) => void;
 };
 
@@ -63,7 +66,7 @@ function useLocalStorage(key: string, initialValue: Event[]) {
     if (jsonValue == null) return initialValue
 
     return (JSON.parse(jsonValue) as Event[]).map(event => {
-      if (event.date instanceof Date) return event
+      // if (event.date instanceof Date) return event
       return { ...event, date: new Date(event.date) }
     })
   })

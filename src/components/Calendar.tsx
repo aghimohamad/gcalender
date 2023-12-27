@@ -22,7 +22,7 @@ import { formatDate } from "../utils/formatDate";
 import { ModalProps } from './Modal';
 import OverFlowContainer from "./overFlowContainer";
 
-function Calender() {
+function Calendar() {
   const [visibleMonth, setVisibleMonth] = React.useState(new Date());
 
   function showNextMonth() {
@@ -69,7 +69,7 @@ function Calender() {
       </div>
       <div className="days">
         {visibleDates.map((date, index) => (
-          <CalanderDay
+          <CalendarDay
             key={index}
             date={date}
             index={index}
@@ -81,18 +81,18 @@ function Calender() {
   );
 }
 
-export default Calender;
+export default Calendar;
 
-type CalanderDayProps = {
+type CalendarDayProps = {
   date: Date;
   index: number;
   visibleMonth: Date;
 };
 
-const CalanderDay = ({ date, index, visibleMonth }: CalanderDayProps) => {
+const CalendarDay = ({ date, index, visibleMonth }: CalendarDayProps) => {
   const [visibleModal, setVisibleModal] = React.useState(false);
   const { addEvent, events } = useEventsContext();
-  console.log("🚀 ~ file: Calender.tsx:84 ~ CalanderDay ~ events:", events);
+  console.log("🚀 ~ file: Calendar.tsx:84 ~ CalendarDay ~ events:", events);
 
   const sortedEvents = events.filter((event) => isSameDay(event.date, date)).sort((a, b) => {
     if (a.allDay && !b.allDay) return -1;
@@ -146,6 +146,7 @@ const CalanderDay = ({ date, index, visibleMonth }: CalanderDayProps) => {
 };
 
 type EventModalProps = {
+  // eslint-disable-next-line no-unused-vars
   onSubmit: (event: UnionOmit<Event, "id">) => void;
 } & Omit<ModalProps, 'children'> & (
     { date: Date, onDelete?: never , event?: never } |
